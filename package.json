@@ -83,7 +83,7 @@
     ],
     "testResultsProcessor": "./node_modules/jest-junit-reporter",
     "cache": false,
-    "silent": false
+    "silent": true
   },
   "greenkeeper": {
     "ignore": [
