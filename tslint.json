@@ -1,0 +1,9 @@
+﻿{
+  "extends": [
+    "backend-tslint-rules"
+  ],
+  "rules": {
+    "no-implicit-dependencies": [true, "dev"],
+    "max-file-line-count": [false]
+  }
+}

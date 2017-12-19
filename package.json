@@ -1,0 +1,94 @@
+{
+  "name": "azure-functions-elasticizer",
+  "version": "1.0.0",
+  "description": "Elasticsearch-based RESTful API implementation on Azure Functions with TypeScript",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azure-seed/azure-functions-elasticizer.git"
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "elasticsearch",
+    "azure-functions",
+    "azure"
+  ],
+  "author": {
+    "name": "Burak Tasci",
+    "email": "me@fulls1z3.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/azure-seed/azure-functions-elasticizer/issues"
+  },
+  "homepage": "https://github.com/azure-seed/azure-functions-elasticizer#readme",
+  "scripts": {
+    "clean": "rimraf .cache dist",
+    "build": "ts-node ./tools/build/rollup.ts && rimraf .temp",
+    "ci:before": "greenkeeper-lockfile-update",
+    "ci:after": "greenkeeper-lockfile-upload",
+    "lint": "tslint -p ./tslint.json --force",
+    "test": "jest --forceExit --coverage --colors",
+    "test:ci": "jest --ci --runInBand --forceExit --coverage --colors",
+    "release": "standard-version"
+  },
+  "main": "./bundles/azure-functions-elasticizer.umd.js",
+  "module": "./azure-functions-elasticizer.es5.js",
+  "es2015": "./azure-functions-elasticizer.js",
+  "typings": "./index.d.ts",
+  "devDependencies": {
+    "bluebird": "~3.5.1",
+    "lodash": "~4.17.4",
+    "azure-functions-ts-essentials": "1.3.1",
+    "elasticsearch": "~14.0.0",
+    "@types/bluebird": "~3.5.18",
+    "@types/elasticsearch": "~5.0.19",
+    "@types/jest": "~21.1.8",
+    "@types/lodash": "4.14.55",
+    "@types/node": "~8.0.56",
+    "rimraf": "~2.6.2",
+    "ts-node": "~3.3.0",
+    "glob": "~7.1.2",
+    "camelcase": "~4.1.0",
+    "rollup": "~0.42.0",
+    "rollup-plugin-node-resolve": "~3.0.0",
+    "rollup-plugin-commonjs": "~8.2.6",
+    "rollup-plugin-sourcemaps": "~0.4.2",
+    "rollup-plugin-uglify": "~2.0.1",
+    "jest": "~21.2.1",
+    "jest-junit-reporter": "~1.1.0",
+    "ts-jest": "~21.2.4",
+    "standard-version": "~4.2.0",
+    "tslint": "~5.8.0",
+    "backend-tslint-rules": "1.1.0",
+    "typescript": "~2.6.2"
+  },
+  "peerDependencies": {
+    "azure-functions-ts-essentials": ">=1.3.1",
+    "bluebird": "~3.5.1",
+    "lodash": ">=4.17.4",
+    "elasticsearch": "~14.0.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testMatch": [
+      "**/*.spec.ts"
+    ],
+    "mapCoverage": true,
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "testResultsProcessor": "./node_modules/jest-junit-reporter",
+    "cache": false,
+    "silent": false
+  },
+  "greenkeeper": {
+    "ignore": [
+      "@types/lodash",
+      "rollup"
+    ]
+  }
+}
