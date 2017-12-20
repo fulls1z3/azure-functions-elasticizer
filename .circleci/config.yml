@@ -5,6 +5,13 @@ jobs:
       - image: circleci/node:6
       - image: levlaz/elasticsearch-docker-ci:5.2.2
     steps:
+      - type: shell
+        name: Test ElasticSearch
+        command: |
+          curl -I -XGET 'localhost:9200/_count?pretty' -d '{"query": {"match_all": {}}}'
+          ps auxfww
+          wget --tries 180 --timeout=15 --read-timeout=20 --waitretry=1 --retry-connrefused 'localhost:9200/_count?pretty' -d '{"query": {"match_all": {}}}'
+          ss -plntu
       - checkout
       - run: sudo npm install -g yarn@0
       - run: sudo yarn global add greenkeeper-lockfile@1
