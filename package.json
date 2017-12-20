@@ -29,7 +29,7 @@
     "ci:after": "greenkeeper-lockfile-upload",
     "lint": "tslint -p ./tslint.json --force",
     "test": "jest --forceExit --coverage --colors",
-    "test:ci": "jest --ci --runInBand --forceExit --coverage --colors",
+    "test:ci": "jest --ci --no-cache --runInBand --forceExit --coverage --colors",
     "release": "standard-version"
   },
   "main": "./bundles/azure-functions-elasticizer.umd.js",
@@ -83,7 +83,7 @@
     ],
     "testResultsProcessor": "./node_modules/jest-junit-reporter",
     "cache": false,
-    "silent": false
+    "silent": true
   },
   "greenkeeper": {
     "ignore": [
