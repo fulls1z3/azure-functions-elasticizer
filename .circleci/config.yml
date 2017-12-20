@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:6
-      - image: levlaz/elasticsearch-docker-ci:5.1.1
+      - image: elastic/elasticsearch:6.0.0
     steps:
       - checkout
       - run: sudo npm install -g yarn@0
