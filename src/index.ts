@@ -36,6 +36,7 @@ export const getStringDate = (now?: Date) => {
 };
 
 const getErrorResponse = (err: Array<any> | any) => {
+console.warn(JSON.stringify(err))
   if (Array.isArray(err) && err.length > 0)
     return {
       status: HttpStatusCode.BadRequest,
