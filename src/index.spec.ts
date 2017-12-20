@@ -61,7 +61,7 @@ const mock = (context: Context, req: HttpRequest): any => {
       const body = _.get(req.query, 'body');
       const query = _.get(req.query, 'q');
       const page = _.get(req.query, 'page', 0);
-      const perPage = _.get(req.query, 'per_page', 0);
+      const perPage = _.get(req.query, 'per_page', 10000);
       const sort = _.get(req.query, 'sortAsc', false);
 
       res$ = id
