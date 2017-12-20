@@ -94,6 +94,7 @@ const mock = (context: Context, req: HttpRequest): any => {
       context.done(undefined, res);
     })
     .catch((err: any) => {
+console.warn(err)
       context.done(undefined, {
         status: HttpStatusCode.InternalServerError,
         body: {
