@@ -519,7 +519,7 @@ describe('@azure-seed/azure-functions-elasticizer', () => {
   });
 
   describe('DELETE /api/mock-items/:index/:id', () => {
-    it('should be able to deactivate an existing item', (done: () => void) => {
+    it('should be able to delete an existing item', (done: () => void) => {
       const mockContext: Context = {
         done: (err, response) => {
           expect(err).toBeUndefined();
