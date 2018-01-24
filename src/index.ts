@@ -3,6 +3,7 @@ import { Promise as bluebird } from 'bluebird';
 import * as _ from 'lodash';
 import * as elasticsearch from 'elasticsearch';
 import { ErrorType, HttpRequest, HttpStatusCode } from 'azure-functions-ts-essentials';
+import { NameList } from 'elasticsearch';
 
 /**
  * Elasticsearch configuration
@@ -98,14 +99,16 @@ export class Elasticizer {
   /**
    * Retrieves existing items.
    */
-  search(index: string,
+  search(index: NameList,
          body?: any,
          query?: any,
          page?: number,
          perPage?: number,
          sortAsc?: boolean): Promise<any> {
     const query$ = this.client.search({
-      index: `${this.prefix}${index}`,
+      index: Array.isArray(index)
+        ? index.map(cur => `${this.prefix}${cur}`)
+        : `${this.prefix}${index}`,
       body,
       q: query,
       from: Number(page) >= 0 && Number(perPage) > 0 ? Number(page) * Number(perPage) : 0,

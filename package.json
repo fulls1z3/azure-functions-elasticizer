@@ -1,6 +1,6 @@
 {
   "name": "azure-functions-elasticizer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Elasticsearch-based RESTful API implementation on Azure Functions with TypeScript",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "ci:after": "greenkeeper-lockfile-upload",
     "lint": "tslint -p ./tslint.json --force",
     "test": "jest --forceExit --coverage --colors",
-    "test:ci": "jest --ci --no-cache --runInBand --forceExit --coverage --colors",
+    "test:ci": "jest --ci --runInBand --forceExit --coverage --colors",
     "release": "standard-version"
   },
   "main": "./bundles/azure-functions-elasticizer.umd.js",

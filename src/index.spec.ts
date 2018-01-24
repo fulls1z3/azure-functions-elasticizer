@@ -160,6 +160,35 @@ describe('@azure-seed/azure-functions-elasticizer', () => {
       mock(mockContext, mockRequest);
     });
 
+    it('should be able to return a list of all items (multiple indices)', (done: () => void) => {
+      const mockContext: Context = {
+        done: (err, response) => {
+          expect(err).toBeUndefined();
+          expect((response as HttpResponse).status).toEqual(HttpStatusCode.OK);
+          expect((response as HttpResponse).body).toHaveProperty('data');
+          expect(typeof((response as HttpResponse).body.data)).toEqual('object');
+          expect((response as HttpResponse).body.data.length).toEqual(2);
+          expect((response as HttpResponse).body).toHaveProperty('hasMore');
+          expect(typeof((response as HttpResponse).body.hasMore)).toEqual('boolean');
+          expect((response as HttpResponse).body).toHaveProperty('totalCount');
+          expect(typeof((response as HttpResponse).body.totalCount)).toEqual('number');
+
+          TEST_ID = (response as HttpResponse).body.data[0]._id;
+
+          done();
+        }
+      };
+
+      const mockRequest: HttpRequest = {
+        method: HttpMethod.Get,
+        params: {
+          index: [TEST_INDEX]
+        }
+      };
+
+      mock(mockContext, mockRequest);
+    });
+
     it('should be able to return items w/query', (done: () => void) => {
       const mockContext: Context = {
         done: (err, response) => {
@@ -519,7 +548,7 @@ describe('@azure-seed/azure-functions-elasticizer', () => {
   });
 
   describe('DELETE /api/mock-items/:index/:id', () => {
-    it('should be able to deactivate an existing item', (done: () => void) => {
+    it('should be able to delete an existing item', (done: () => void) => {
       const mockContext: Context = {
         done: (err, response) => {
           expect(err).toBeUndefined();
