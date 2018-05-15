@@ -1,8 +1,9 @@
 // libs
 import { Promise as bluebird } from 'bluebird';
-import * as _ from 'lodash';
+import { get, getOr } from 'lodash/fp';
 import * as elasticsearch from 'elasticsearch';
 import { ErrorType, HttpRequest, HttpStatusCode } from 'azure-functions-ts-essentials';
+// tslint:disable-next-line
 import { NameList } from 'elasticsearch';
 
 /**
@@ -41,10 +42,10 @@ const getErrorResponse = (err: Array<any> | any) => {
     return {
       status: HttpStatusCode.BadRequest,
       body: err.map(cur => ({
-        type: _.get(cur, 'type'),
-        message: _.get(cur, 'reason'),
-        index: _.get(cur, 'index'),
-        uuid: _.get(cur, 'index_uuid')
+        type: get('type', cur),
+        message: get('reason', cur),
+        index: get('index', cur),
+        uuid: get('index_uuid', cur)
       }))
     };
 
@@ -62,16 +63,16 @@ const getErrorResponse = (err: Array<any> | any) => {
  */
 export class Elasticizer {
   private client: any;
-  private refresh: string;
-  private prefix: string;
+  private refresh: string | any;
+  private prefix: string | any;
 
   constructor(private readonly host: string,
               private readonly type: string,
               private readonly options?: {prefix?: string, refresh?: string}) {
     this.client = getElasticClient(host);
 
-    this.refresh = _.get(options, 'refresh', ELASTICSEARCH_REFRESH);
-    this.prefix = _.get(options, 'prefix', '');
+    this.refresh = getOr(ELASTICSEARCH_REFRESH, 'refresh', options);
+    this.prefix = getOr('', 'prefix', options);
   }
 
   /**
@@ -174,7 +175,7 @@ export class Elasticizer {
 
     return query$
       .then((res: any) => {
-        const isError = _.get(res, 'errors');
+        const isError = get('errors', res);
 
         if (isError)
           return getErrorResponse(res.items.map((cur: any) => cur.index.error));
