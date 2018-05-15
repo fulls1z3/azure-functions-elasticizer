@@ -1,6 +1,6 @@
 // libs
 import { Promise as bluebird } from 'bluebird';
-import * as _ from 'lodash';
+import { get, getOr } from 'lodash/fp';
 import { Context, HttpMethod, HttpRequest, HttpResponse, HttpStatusCode } from 'azure-functions-ts-essentials';
 
 // module
@@ -52,17 +52,17 @@ const mock = (context: Context, req: HttpRequest): any => {
   const elasticizer = new Elasticizer(ELASTICSEARCH_HOST, TEST_TYPE, {prefix: ELASTICSEARCH_INDEX_PREFIX});
 
   let res$: Promise<HttpResponse>;
-  const method = _.get(req, 'method');
-  const index = _.get(req, 'params.index', '');
-  const id = _.get(req, 'params.id');
+  const method = get('method', req);
+  const index = getOr('', 'params.index', req);
+  const id = get('params.id', req);
 
   switch (method) {
     case HttpMethod.Get:
-      const body = _.get(req.query, 'body');
-      const query = _.get(req.query, 'q');
-      const page = _.get(req.query, 'page', 0);
-      const perPage = _.get(req.query, 'per_page', 10000);
-      const sort = _.get(req.query, 'sortAsc', false);
+      const body = get('body', req.query);
+      const query = get('q', req.query);
+      const page = getOr(0, 'page', req.query);
+      const perPage = getOr(10000, 'per_page', req.query);
+      const sort = getOr(false, 'sortAsc', req.query);
 
       res$ = id
         ? elasticizer.getOne(index, id)

@@ -16,8 +16,7 @@ const packageName = 'azure-functions-elasticizer';
 const compilationFolder = root('.temp');
 const globals = {
   bluebird: 'bluebird',
-  lodash: '_',
-  'lodash/index': '_',
+  'lodash/fp': '_',
   elasticsearch: 'elasticsearch',
   'azure-functions-ts-essentials': '_azureFunctionsTsEssentials'
 };
