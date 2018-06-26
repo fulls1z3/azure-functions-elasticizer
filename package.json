@@ -44,7 +44,7 @@
     "request": "~2.86.0",
     "@types/bluebird": "~3.5.20",
     "@types/elasticsearch": "~5.0.23",
-    "@types/jest": "~22.2.3",
+    "@types/jest": "~23.1.2",
     "@types/lodash": "~4.14.108",
     "@types/node": "~10.0.9",
     "rimraf": "~2.6.2",
