@@ -14,9 +14,9 @@
   version "3.5.20"
   resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.20.tgz#f6363172add6f4eabb8cada53ca9af2781e8d6a1"
 
-"@types/elasticsearch@~5.0.23":
-  version "5.0.23"
-  resolved "https://registry.yarnpkg.com/@types/elasticsearch/-/elasticsearch-5.0.23.tgz#235622772a7c7f3ccedd0dc9769dfcfe20eed1ec"
+"@types/elasticsearch@~5.0.30":
+  version "5.0.30"
+  resolved "https://registry.yarnpkg.com/@types/elasticsearch/-/elasticsearch-5.0.30.tgz#3c52f7119e3a20a47e2feb8e2b4cc54030a54e23"
 
 "@types/jest@~22.2.3":
   version "22.2.3"
