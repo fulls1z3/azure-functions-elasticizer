@@ -1106,7 +1106,6 @@ ecc-jsbn@~0.1.1:
 elasticsearch@~15.3.0:
   version "15.3.0"
   resolved "https://registry.yarnpkg.com/elasticsearch/-/elasticsearch-15.3.0.tgz#7a478d23e8af02b60fd03201f1c65fd5657bf7d3"
-  integrity sha512-anZpNB65mqr0aKAN/YPR5OFmD09KnbxBxzyc5vINkip6ECpyCSvBqCKbQNNY/FNwKop2urkRmtnU2sY5cVw1cw==
   dependencies:
     agentkeepalive "^3.4.1"
     chalk "^1.0.0"
