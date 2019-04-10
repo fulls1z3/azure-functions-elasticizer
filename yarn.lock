@@ -29,7 +29,6 @@
 "@types/node@~11.13.3":
   version "11.13.3"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.3.tgz#dbc789a46f82d96d3ac86dd10b84f86bab111d22"
-  integrity sha512-OgizLUF0unveHVSI74hyX1J5vQeteANZX+Gqc5qr6fR7JVFYBmzJmcxAncBl8H9Cwz2Zks2dx4uQc7g77iUcWQ==
 
 JSONStream@^1.0.4:
   version "1.3.1"
