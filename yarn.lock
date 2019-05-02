@@ -1103,9 +1103,10 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
 
-elasticsearch@~15.0.0:
-  version "15.0.0"
-  resolved "https://registry.yarnpkg.com/elasticsearch/-/elasticsearch-15.0.0.tgz#d888ceb858bba30221b68698d72c54bdcfdf2fba"
+elasticsearch@~16.0.0:
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/elasticsearch/-/elasticsearch-16.0.0.tgz#39cf4d45bd806b443c0970379fce7cb216c233e4"
+  integrity sha512-R2pHVWdJs9L2+ZghwAHjAEyQq4B0WVkWVPxlUtLMTyeBXlh4Y0Z+3VnW2+zaud4PRFBiAaTyKzfxD7TgMqpMJA==
   dependencies:
     agentkeepalive "^3.4.1"
     chalk "^1.0.0"
